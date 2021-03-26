@@ -244,7 +244,8 @@ public abstract class GUIExtender implements Listener, WindowResponse {
           5
         );
       // I need to update the inventory because minecraft is weird
-      // otherwise you can make the item to.. "stay" in your inventory until you do something with it
+      // otherwise you can make the item to.. "stay" in your inventory until you do
+      // something with it
     }
   }
 

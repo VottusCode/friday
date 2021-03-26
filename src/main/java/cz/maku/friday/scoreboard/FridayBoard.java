@@ -9,10 +9,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 /**
- * Simple Bukkit ScoreBoard API with 1.7 to 1.16 support.
- * Everything is at packet level so you don't need to use it in the main server thread.
+ * Simple Bukkit ScoreBoard API with 1.7 to 1.16 support. Everything is at
+ * packet level so you don't need to use it in the main server thread.
  * <p>
- * You can find the project on <a href="https://github.com/MrMicky-FR/FridayBoard">GitHub</a>
+ * You can find the project on
+ * <a href="https://github.com/MrMicky-FR/FridayBoard">GitHub</a>
  *
  * @author MrMicky
  */
@@ -162,7 +163,8 @@ public class FridayBoard {
    * Update the scoreboard title.
    *
    * @param title the new scoreboard title
-   * @throws IllegalArgumentException if the title is longer than 32 chars on 1.12 or lower
+   * @throws IllegalArgumentException if the title is longer than 32 chars on 1.12
+   *                                  or lower
    * @throws IllegalStateException    if {@link #delete()} was call before
    */
   public void updateTitle(String title) {
@@ -260,7 +262,8 @@ public class FridayBoard {
    * Update all the scoreboard lines.
    *
    * @param lines the new lines
-   * @throws IllegalArgumentException if one line is longer than 30 chars on 1.12 or lower
+   * @throws IllegalArgumentException if one line is longer than 30 chars on 1.12
+   *                                  or lower
    * @throws IllegalStateException    if {@link #delete()} was call before
    */
   public void updateLines(String... lines) {
@@ -271,7 +274,8 @@ public class FridayBoard {
    * Update the lines of the scoreboard
    *
    * @param lines the new scoreboard lines
-   * @throws IllegalArgumentException if one line is longer than 30 chars on 1.12 or lower
+   * @throws IllegalArgumentException if one line is longer than 30 chars on 1.12
+   *                                  or lower
    * @throws IllegalStateException    if {@link #delete()} was call before
    */
   public void updateLines(Collection<String> lines) {
@@ -365,8 +369,9 @@ public class FridayBoard {
   }
 
   /**
-   * Delete this FridayBoard, and will remove the scoreboard for the associated player if he is online.
-   * After this, all uses of {@link #updateLines} and {@link #updateTitle} will throws an {@link IllegalStateException}
+   * Delete this FridayBoard, and will remove the scoreboard for the associated
+   * player if he is online. After this, all uses of {@link #updateLines} and
+   * {@link #updateTitle} will throws an {@link IllegalStateException}
    *
    * @throws IllegalStateException if this was already call before
    */
