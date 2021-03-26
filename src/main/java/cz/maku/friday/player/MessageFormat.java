@@ -1,8 +1,8 @@
 package cz.maku.friday.player;
 
 public enum MessageFormat {
-    SUCCESS,
-    WARNING,
-    ERROR,
-    LOADING;
+  SUCCESS,
+  WARNING,
+  ERROR,
+  LOADING,
 }

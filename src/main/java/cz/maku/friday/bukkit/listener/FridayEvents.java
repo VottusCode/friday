@@ -10,14 +10,17 @@ import org.bukkit.event.Listener;
 
 public class FridayEvents implements Listener {
 
-    @EventHandler
-    public void onFridayPlayerLoad(FridayPlayerLoadEvent e) {
-        Friday.getPlugin().setOnlinePlayers(Friday.getPlugin().getOnlinePlayers() + 1);
-    }
+  @EventHandler
+  public void onFridayPlayerLoad(FridayPlayerLoadEvent e) {
+    Friday
+      .getPlugin()
+      .setOnlinePlayers(Friday.getPlugin().getOnlinePlayers() + 1);
+  }
 
-    @EventHandler
-    public void onFridayPlayerQuit(FridayPlayerQuitEvent e) {
-        Friday.getPlugin().setOnlinePlayers(Friday.getPlugin().getOnlinePlayers() - 1);
-    }
-
+  @EventHandler
+  public void onFridayPlayerQuit(FridayPlayerQuitEvent e) {
+    Friday
+      .getPlugin()
+      .setOnlinePlayers(Friday.getPlugin().getOnlinePlayers() - 1);
+  }
 }

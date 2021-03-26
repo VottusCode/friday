@@ -7,25 +7,25 @@ import org.bukkit.event.HandlerList;
 
 public class FridayPlayerLoadEvent extends Event {
 
-    private static final HandlerList HANDLERS = new HandlerList();
-    @Getter
-    private final FridayPlayer fridayPlayer;
+  private static final HandlerList HANDLERS = new HandlerList();
 
-    public FridayPlayerLoadEvent(FridayPlayer fridayPlayer) {
-        this.fridayPlayer = fridayPlayer;
-    }
+  @Getter
+  private final FridayPlayer fridayPlayer;
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS;
-    }
+  public FridayPlayerLoadEvent(FridayPlayer fridayPlayer) {
+    this.fridayPlayer = fridayPlayer;
+  }
 
-    @Override
-    public HandlerList getHandlers() {
-        return HANDLERS;
-    }
+  public static HandlerList getHandlerList() {
+    return HANDLERS;
+  }
 
-    public void kickPlayer(String reason) {
-        fridayPlayer.kick(reason);
-    }
+  @Override
+  public HandlerList getHandlers() {
+    return HANDLERS;
+  }
 
+  public void kickPlayer(String reason) {
+    fridayPlayer.kick(reason);
+  }
 }

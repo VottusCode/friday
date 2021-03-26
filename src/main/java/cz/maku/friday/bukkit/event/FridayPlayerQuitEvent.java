@@ -6,25 +6,24 @@ import org.bukkit.event.HandlerList;
 
 public class FridayPlayerQuitEvent extends Event {
 
-    private final FridayPlayer fridayPlayer;
+  private final FridayPlayer fridayPlayer;
 
-    public FridayPlayerQuitEvent(FridayPlayer fridayPlayer) {
-        this.fridayPlayer = fridayPlayer;
-    }
+  public FridayPlayerQuitEvent(FridayPlayer fridayPlayer) {
+    this.fridayPlayer = fridayPlayer;
+  }
 
-    private static final HandlerList HANDLERS = new HandlerList();
+  private static final HandlerList HANDLERS = new HandlerList();
 
-    @Override
-    public HandlerList getHandlers() {
-        return HANDLERS;
-    }
+  @Override
+  public HandlerList getHandlers() {
+    return HANDLERS;
+  }
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS;
-    }
+  public static HandlerList getHandlerList() {
+    return HANDLERS;
+  }
 
-    public FridayPlayer getFridayPlayer() {
-        return fridayPlayer;
-    }
-
+  public FridayPlayer getFridayPlayer() {
+    return fridayPlayer;
+  }
 }

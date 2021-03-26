@@ -1,2 +1,3 @@
 # friday
+
 Spigot plugins api

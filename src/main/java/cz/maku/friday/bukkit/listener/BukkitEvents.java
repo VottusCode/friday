@@ -12,21 +12,23 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class BukkitEvents implements Listener {
 
-    @EventHandler
-    public void onJoin(PlayerJoinEvent e) {
-        Friday.getPlugin().getFridayPlayers().put(e.getPlayer().getName(), new FridayPlayer(e.getPlayer().getName()));
-        FridayPlayer fp = FridayPlayer.get(e.getPlayer().getName());
-        //Load methods from sql in future
-        FridayPlayerLoadEvent event = new FridayPlayerLoadEvent(fp);
-        Bukkit.getPluginManager().callEvent(event);
-    }
+  @EventHandler
+  public void onJoin(PlayerJoinEvent e) {
+    Friday
+      .getPlugin()
+      .getFridayPlayers()
+      .put(e.getPlayer().getName(), new FridayPlayer(e.getPlayer().getName()));
+    FridayPlayer fp = FridayPlayer.get(e.getPlayer().getName());
+    //Load methods from sql in future
+    FridayPlayerLoadEvent event = new FridayPlayerLoadEvent(fp);
+    Bukkit.getPluginManager().callEvent(event);
+  }
 
-    @EventHandler
-    public void onQuit(PlayerQuitEvent e) {
-        FridayPlayer fp = FridayPlayer.get(e.getPlayer().getName());
-        FridayPlayerQuitEvent event = new FridayPlayerQuitEvent(fp);
-        Bukkit.getPluginManager().callEvent(event);
-        Friday.getPlugin().getFridayPlayers().remove(e.getPlayer().getName(), fp);
-    }
-
+  @EventHandler
+  public void onQuit(PlayerQuitEvent e) {
+    FridayPlayer fp = FridayPlayer.get(e.getPlayer().getName());
+    FridayPlayerQuitEvent event = new FridayPlayerQuitEvent(fp);
+    Bukkit.getPluginManager().callEvent(event);
+    Friday.getPlugin().getFridayPlayers().remove(e.getPlayer().getName(), fp);
+  }
 }

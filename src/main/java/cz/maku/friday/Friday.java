@@ -11,80 +11,89 @@ import cz.maku.friday.storage.config.Config;
 import cz.maku.friday.storage.sql.DataSource;
 import cz.maku.friday.storage.sql.SQLStorage;
 import cz.maku.friday.util.Logger;
+import java.util.Map;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Map;
-
 public class Friday extends JavaPlugin {
 
-    @Getter
-    private static Friday plugin;
-    @Getter
-    private DataSource dataSource;
-    @Getter
-    private Logger log;
-    @Getter
-    private Config databaseConfig;
-    @Getter
-    private Config adminsConfig;
-    @Getter
-    @Setter
-    private int onlinePlayers;
-    @Getter
-    private Map<String, FridayPlayer> fridayPlayers;
+  @Getter
+  private static Friday plugin;
 
-    @Override
-    public void onEnable() {
-        log = new Logger();
-        plugin = this;
-        init();
-        initListener();
-        initConfigs();
-        log.log(Logger.LoggerType.SUCCESS, "Friday was enabled.", true);
-        initCommand(new FridayCmd());
-        initCommand(new ExecutingCmd());
-    }
+  @Getter
+  private DataSource dataSource;
 
-    @Override
-    public void onDisable() {
-        log.log(Logger.LoggerType.ERROR, "Friday was disabled.", true);
-    }
+  @Getter
+  private Logger log;
 
-    private void init() {
-        fridayPlayers = Maps.newHashMap();
-        dataSource = new DataSource(getConfig());
-        databaseConfig = new Config(plugin, "database");
-        adminsConfig = new Config(plugin, "admins");
-        if (databaseConfig.isExists()) {
-            dataSource.connect();
-        } else {
-            log.log(Logger.LoggerType.WARNING, "File database.yml is not created. Database can't be connected.", true);
-        }
-    }
+  @Getter
+  private Config databaseConfig;
 
-    private void initListener() {
-        getServer().getPluginManager().registerEvents(new BukkitEvents(), plugin);
-        getServer().getPluginManager().registerEvents(new FridayEvents(), plugin);
-    }
+  @Getter
+  private Config adminsConfig;
 
-    private void initConfigs() {
-        if (!databaseConfig.isExists()) {
-            databaseConfig.createNewFile();
-            databaseConfig.set("database.address", "127.0.0.1");
-            databaseConfig.set("database.port", 3306);
-            databaseConfig.set("database.name", "database");
-            databaseConfig.set("database.user", "root");
-            databaseConfig.set("database.password", "password");
-        }
-        if (!adminsConfig.isExists()) {
-            adminsConfig.createNewFile();
-            adminsConfig.createStringList("admins", "itIsMaku");
-        }
-    }
+  @Getter
+  @Setter
+  private int onlinePlayers;
 
-    public void initCommand(FridayCommand fc) {
-        plugin.getCommand(fc.getCommandName()).setExecutor(fc);
+  @Getter
+  private Map<String, FridayPlayer> fridayPlayers;
+
+  @Override
+  public void onEnable() {
+    log = new Logger();
+    plugin = this;
+    init();
+    initListener();
+    initConfigs();
+    log.log(Logger.LoggerType.SUCCESS, "Friday was enabled.", true);
+    initCommand(new FridayCmd());
+    initCommand(new ExecutingCmd());
+  }
+
+  @Override
+  public void onDisable() {
+    log.log(Logger.LoggerType.ERROR, "Friday was disabled.", true);
+  }
+
+  private void init() {
+    fridayPlayers = Maps.newHashMap();
+    dataSource = new DataSource(getConfig());
+    databaseConfig = new Config(plugin, "database");
+    adminsConfig = new Config(plugin, "admins");
+    if (databaseConfig.isExists()) {
+      dataSource.connect();
+    } else {
+      log.log(
+        Logger.LoggerType.WARNING,
+        "File database.yml is not created. Database can't be connected.",
+        true
+      );
     }
+  }
+
+  private void initListener() {
+    getServer().getPluginManager().registerEvents(new BukkitEvents(), plugin);
+    getServer().getPluginManager().registerEvents(new FridayEvents(), plugin);
+  }
+
+  private void initConfigs() {
+    if (!databaseConfig.isExists()) {
+      databaseConfig.createNewFile();
+      databaseConfig.set("database.address", "127.0.0.1");
+      databaseConfig.set("database.port", 3306);
+      databaseConfig.set("database.name", "database");
+      databaseConfig.set("database.user", "root");
+      databaseConfig.set("database.password", "password");
+    }
+    if (!adminsConfig.isExists()) {
+      adminsConfig.createNewFile();
+      adminsConfig.createStringList("admins", "itIsMaku");
+    }
+  }
+
+  public void initCommand(FridayCommand fc) {
+    plugin.getCommand(fc.getCommandName()).setExecutor(fc);
+  }
 }
