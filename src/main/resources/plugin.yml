@@ -1,0 +1,9 @@
+main: cz.maku.friday.Friday
+name: Friday
+version: 1.0
+api-version: 1.16
+description: API for Core, managing the entire server
+author: itIsMaku
+commands:
+  friday:
+  executing:
