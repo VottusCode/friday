@@ -30,14 +30,18 @@ public abstract class GUIExtender implements Listener, WindowResponse {
   private GUI gui;
   private WindowResponse windowResponse;
 
+  private JavaPlugin plugin;
+
   public GUIExtender(GUI gui) {
+    this.plugin = Friday.getPlugin();
     setup(gui);
     register();
   }
 
   public GUIExtender(GUI gui, JavaPlugin plugin) {
+    this.plugin = plugin;
     setup(gui);
-    register(plugin);
+    register();
   }
 
   private void setup(GUI gui) {
@@ -50,12 +54,8 @@ public abstract class GUIExtender implements Listener, WindowResponse {
     this.guiSettings.setCanDrag(false);
   }
 
-  private void register(JavaPlugin plugin) {
-    Bukkit.getPluginManager().registerEvents(this, plugin);
-  }
-
   private void register() {
-    Bukkit.getPluginManager().registerEvents(this, Friday.getPlugin());
+    Bukkit.getPluginManager().registerEvents(this, plugin);
   }
 
   public void setGUI(GUI gui) {
@@ -256,7 +256,7 @@ public abstract class GUIExtender implements Listener, WindowResponse {
       Bukkit
         .getScheduler()
         .runTaskLater(
-          Friday.getPlugin(),
+          this.plugin,
           () -> ((Player) e.getPlayer()).updateInventory(),
           5
         );
